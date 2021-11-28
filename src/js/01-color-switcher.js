@@ -4,13 +4,14 @@ const bodyColor = document.querySelector('body')
 function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   };
-let intervalId = null;
+    let intervalId = null;
   const setBackgroundColor = () => {
     bodyColor.style.backgroundColor = getRandomHexColor();
     console.log(setBackgroundColor);
   }
   
   const onStartBtnPress = () => {
+     // console.log('start')
     intervalId = setInterval(() => {
     setBackgroundColor()
   },
@@ -26,7 +27,3 @@ let intervalId = null;
   }
 startBtn.addEventListener('click', onStartBtnPress);
 stopBtn.addEventListener('click', onStopBtnPress);
-
-    
-
-
