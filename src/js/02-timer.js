@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
 import flatpickr from "flatpickr";
-import "flatpickr/dist/themes/dark.css";
+import "flatpickr/dist/themes/material_green.css";
 
 const selector = document.getElementById('datetime-picker');
 const startBtn = document.querySelector("[data-start]");
@@ -22,10 +22,7 @@ flatpickr("#datetime-picker",{
     dateSelected(selectedDates[0]);
 },
 });
-startBtn.addEventListener('click', () => {
-  startBtn.disabled = true;
-  selector.disabled = true;
- });
+startBtn.disabled = true;
   let selectedDate = null;
   let intervalId = null;
   const dateNow = new Date();
@@ -35,7 +32,7 @@ startBtn.addEventListener('click', () => {
     const dateNow = new Date();
   if (date.getTime() < dateNow.getTime()) {
     startBtn.disabled = true;
-    Notiflix.Notify.warning('Please choose a date in the future');
+    Notiflix.Notify.failure('Please choose a date in the future');
   return;
   }
   startBtn.disabled = false;
@@ -53,7 +50,10 @@ startBtn.addEventListener('click', () => {
   addLeadingZero(minutes,deltaMinutes);
   addLeadingZero(seconds, deltaSeconds);
    };
-
+   startBtn.addEventListener('click', () => {
+    startBtn.disabled = true;
+    input.disabled = true;
+   });
   function convertMs(ms) {
     // Number of milliseconds per unit of time
     const second = 1000;
@@ -80,14 +80,24 @@ startBtn.addEventListener('click', () => {
   element.textContent = String(value).padStart(2, '0')
   }
 
-
-document.body.style.textAlign ='centr';
 document.body.style.boxShadow = '0 0 15px #212121';
 document.body.style.borderRadius = '4%';
 document.body.style.backgroundColor = '#eee';
-document.body.style.width = '400px';
+document.body.style.width = '800px';
 document.body.style.padding = '30px';
-deltaTime.style.margin = '15px';
+deltaTime.style.display ='flex';
+deltaTime.style.justifyContent = 'space-around'
+deltaTime.style.flexFlow = 'row nowrap';
+deltaTime.style.textAlign ='centr';
+deltaTime.style.margin = '30px';
+deltaTime.style.fontSize ='30px';
+selector.style.fontSize ='30px';
+selector.style.padding = '10px';
+startBtn.style.fontSize ='40px';
+startBtn.style.alignItems ='centr';
+startBtn.style.marginLeft ='30px';
+
+
 
 
 
